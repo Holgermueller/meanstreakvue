@@ -1,40 +1,39 @@
 <template>
   <v-app dark>
-    <v-navigation-drawer
-      v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      fixed
-      app
-    >
-      <v-list>
-        <v-list-item
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.to"
-          router
-          exact
+    <v-app-bar app>
+      <v-toolbar-title>
+        <nuxt-link to="/">
+          <strong class="display-1 font-italic font-weight-bold name">
+            MeanStreak</strong
+          ></nuxt-link
         >
-          <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-    <v-app-bar :clipped-left="clipped" fixed app>
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-btn icon @click.stop="miniVariant = !miniVariant">
-        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
-      </v-btn>
-
-      <v-toolbar-title class="font-italic font-weight-bold" v-text="title" />
+      </v-toolbar-title>
 
       <v-spacer></v-spacer>
-      <v-btn depressed>Social</v-btn>
-      <v-btn depressed></v-btn>
+      <v-btn depressed>
+        <v-icon>
+          {{ 'mdi-twitter' }}
+        </v-icon>
+      </v-btn>
+      <v-btn depressed>
+        <v-icon>
+          {{ 'mdi-instagram' }}
+        </v-icon>
+      </v-btn>
+
+      <template v-slot:extension>
+        <v-tabs align-with-title class="tabs">
+          <v-tab>
+            <nuxt-link to="/">Home</nuxt-link>
+          </v-tab>
+          <v-tab>
+            <nuxt-link to="/previous/previous">Previous</nuxt-link>
+          </v-tab>
+          <v-tab>
+            <nuxt-link to="/about">About</nuxt-link>
+          </v-tab>
+        </v-tabs>
+      </template>
     </v-app-bar>
 
     <v-content>
@@ -43,35 +42,35 @@
       </v-container>
     </v-content>
 
-    <v-footer :fixed="fixed" app>
+    <v-footer app>
       <span>&copy; {{ new Date().getFullYear() }} | Holger Mueller</span>
     </v-footer>
   </v-app>
 </template>
 
 <script>
+import NavMenu from './navmenu'
+
 export default {
+  components: {
+    NavMenu
+  },
+
   data() {
-    return {
-      clipped: false,
-      drawer: false,
-      fixed: false,
-      items: [
-        {
-          icon: 'mdi-apps',
-          title: 'Welcome',
-          to: '/'
-        },
-        {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
-        }
-      ],
-      miniVariant: false,
-      right: true,
-      title: 'MeanStreak'
-    }
+    return {}
   }
 }
 </script>
+
+<style scoped>
+.name {
+  color: black;
+}
+a {
+  text-decoration: none;
+}
+.tabs {
+  width: 100%;
+  justify-content: space-evenly;
+}
+</style>
