@@ -22,9 +22,9 @@
       </v-btn>
 
       <template v-slot:extension>
-        <v-tabs align-with-title class="tabs">
+        <v-tabs centered grow class="tabs">
           <v-tab>
-            <nuxt-link to="/">Home</nuxt-link>
+            <nuxt-link to="/"> Home</nuxt-link>
           </v-tab>
           <v-tab>
             <nuxt-link to="/previous/previous">Previous</nuxt-link>
@@ -57,7 +57,9 @@ export default {
   },
 
   data() {
-    return {}
+    return {
+      tab: null
+    }
   }
 }
 </script>
@@ -68,9 +70,5 @@ export default {
 }
 a {
   text-decoration: none;
-}
-.tabs {
-  width: 100%;
-  justify-content: space-evenly;
 }
 </style>
