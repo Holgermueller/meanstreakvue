@@ -23,14 +23,14 @@
 
       <template v-slot:extension>
         <v-tabs centered grow class="tabs">
-          <v-tab>
-            <nuxt-link to="/"> Home</nuxt-link>
+          <v-tab to="/">
+            Home
           </v-tab>
-          <v-tab>
-            <nuxt-link to="/previous/previous">Previous</nuxt-link>
+          <v-tab to="/previous/previous">
+            Previous
           </v-tab>
-          <v-tab>
-            <nuxt-link to="/about">About</nuxt-link>
+          <v-tab to="/about">
+            About
           </v-tab>
         </v-tabs>
       </template>
@@ -49,12 +49,8 @@
 </template>
 
 <script>
-import NavMenu from './navmenu'
-
 export default {
-  components: {
-    NavMenu
-  },
+  components: {},
 
   data() {
     return {
