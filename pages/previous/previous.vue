@@ -10,7 +10,7 @@
       >
     </div>
 
-    <v-card>
+    <v-card class="archive-card">
       <v-card-title
         >A series of cards will appear here linking to pages wiht the actual
         cartoon.
@@ -22,5 +22,9 @@
 <style scoped>
 .page-title {
   margin: 4% 8%;
+}
+.archive-card {
+  margin: 0 auto;
+  width: 85%;
 }
 </style>
