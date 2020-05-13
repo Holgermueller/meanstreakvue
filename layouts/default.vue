@@ -10,27 +10,32 @@
       </v-toolbar-title>
 
       <v-spacer></v-spacer>
-      <v-btn color="#379683" depressed>
-        <v-icon>
-          {{ 'mdi-twitter' }}
-        </v-icon>
-      </v-btn>
-      <v-btn color="#379683" depressed>
-        <v-icon>
-          {{ 'mdi-instagram' }}
-        </v-icon>
-      </v-btn>
+      <a href="https://twitter.com/thatHMMueller"
+        ><v-btn color="#379683" depressed>
+          <v-icon>
+            {{ 'mdi-twitter' }}
+          </v-icon>
+        </v-btn>
+      </a>
+
+      <a href="https://www.instagram.com/holgerj9/">
+        <v-btn color="#379683" depressed>
+          <v-icon>
+            {{ 'mdi-instagram' }}
+          </v-icon>
+        </v-btn>
+      </a>
 
       <template v-slot:extension>
         <v-tabs centered grow class="tabs" dark>
           <v-tabs-slider color="black" />
-          <v-tab to="/" class="black--text">
+          <v-tab to="/" active-class="black--text">
             Home
           </v-tab>
-          <v-tab to="/previous/previous">
+          <v-tab to="/previous/previous" active-class="black--text">
             Previous
           </v-tab>
-          <v-tab to="/about" class="black--text">
+          <v-tab to="/about" active-class="black--text">
             About
           </v-tab>
         </v-tabs>
