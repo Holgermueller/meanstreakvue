@@ -6,7 +6,7 @@
     </div>
     <v-card class="index-card">
       <v-card-title class="headline">
-        Name for first cartoon
+        {{ title }}
       </v-card-title>
       <v-card-text>
         <h1>Image will appear here!!</h1>
@@ -17,10 +17,31 @@
 </template>
 
 <script>
+import { createClient } from '~/plugins/contentful'
+const contentfulClient = createClient()
+
 export default {
   components: {},
 
-  asyncData() {}
+  asyncData({ data }) {
+    return Promise.all([
+      contentfulClient.getEntries({
+        content_type: 'BlogPostMS',
+        order: '-sys.id'
+      })
+    ])
+      .then(([pages]) => {
+        return {
+          title: pages.items[0].fields.title,
+          dateTime: pages.items[0].fields.dateTime,
+          pic: pages.items[0].fields.pic,
+          authorArtist: pages.items[0].fields.authorArtist
+        }
+      })
+      .catch(console.error)
+  },
+
+  filters: {}
 }
 </script>
 

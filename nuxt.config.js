@@ -1,4 +1,6 @@
 import colors from 'vuetify/es5/util/colors'
+require('dotenv').config()
+const contentfulConfig = require('./.contentful.json')
 
 export default {
   mode: 'universal',
@@ -30,7 +32,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: ['~/plugins/contentful'],
   /*
    ** Nuxt.js dev-modules
    */
@@ -42,6 +44,11 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios'
   ],
+  env: {
+    SPACE_ID: contentfulConfig.SPACE_ID,
+    ACCESS_TOKEN: contentfulConfig.ACCESS_TOKEN,
+    ENVIRONMENT: contentfulConfig.ENVIRONMENT
+  },
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
