@@ -45,9 +45,9 @@ export default {
     '@nuxtjs/axios'
   ],
   env: {
-    SPACE_ID: contentfulConfig.SPACE_ID,
-    ACCESS_TOKEN: contentfulConfig.ACCESS_TOKEN,
-    ENVIRONMENT: contentfulConfig.ENVIRONMENT
+    CTF_SPACE_ID: contentfulConfig.CTF_SPACE_ID,
+    CTF_CDA_ACCESS_TOKEN: contentfulConfig.CTF_CDA_ACCESS_TOKEN,
+    CTF_ENVIRONMENT: contentfulConfig.CTF_ENVIRONMENT
   },
   /*
    ** Axios module configuration

@@ -5,19 +5,31 @@
       <h3>The cartoon strip no one asked for!</h3>
     </div>
     <v-card class="index-card">
-      <v-card-title class="headline">
-        {{ title }}
-      </v-card-title>
+      <v-card-title class="headline"> {{ title }} </v-card-title>
+      <v-card-subtitle>
+        {{ dateTime }}
+      </v-card-subtitle>
+
       <v-card-text>
         <h1>Image will appear here!!</h1>
+
+        <v-img
+          :src="pic"
+          alt="Today's awesome cartoon/crime against nature and humanity seems to be experiencing technical difficulties. We apologize for any inconvenience or trauma this may have caused."
+          class="image"
+        >
+        </v-img>
       </v-card-text>
-      <v-card-actions> </v-card-actions>
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <h6>{{ authorArtist }}</h6>
+      </v-card-actions>
     </v-card>
   </div>
 </template>
 
 <script>
-import { createClient } from '~/plugins/contentful'
+import { createClient } from '~/plugins/contentful.js'
 const contentfulClient = createClient()
 
 export default {
@@ -26,20 +38,37 @@ export default {
   asyncData({ data }) {
     return Promise.all([
       contentfulClient.getEntries({
-        content_type: 'BlogPostMS',
-        order: '-sys.id'
+        content_type: 'blogPostMs',
+        order: '-sys.createdAt'
       })
     ])
       .then(([pages]) => {
         return {
           title: pages.items[0].fields.title,
           dateTime: pages.items[0].fields.dateTime,
-          pic: pages.items[0].fields.pic,
-          authorArtist: pages.items[0].fields.authorArtist
+          authorArtist: pages.items[0].fields.authorArtist,
+          pic: 'https:' + pages.items[0].fields.pic.fields.file.url
         }
       })
       .catch(console.error)
   },
+
+  // asyncData({ data }) {
+  //   return Promise.all([
+  //     contentfulClient.getEntries({
+  //       content_type: 'BlogPostMS'
+  //     })
+  //   ])
+  //     .then(([pages]) => {
+  //       return {
+  //         title: pages.items[0].fields.title,
+  //         dateTime: pages.items[0].fields.dateTime,
+  //         pic: pages.items[0].fields.pic,
+  //         authorArtist: pages.items[0].fields.authorArtist
+  //       }
+  //     })
+  //     .catch(console.error)
+  // },
 
   filters: {}
 }
@@ -52,5 +81,8 @@ export default {
 .index-card {
   width: 75%;
   margin: 5% auto;
+}
+.image {
+  margin: 4% auto;
 }
 </style>

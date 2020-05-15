@@ -1,6 +1,6 @@
 {
-  "BLOG_POST_TYPE": "BlogPostMS",
-  "SPACE_ID": "9qibrxnc18ok",
-  "ACCESS_TOKEN": "ZmEUYYWwW25ghf6pYeOS4MvHc4SHWoZK45b_QGmKuBg",
-  "ENVIRONMENT": "master"
+  "CTF_BLOG_POST_TYPE": "blogPostMs",
+  "CTF_SPACE_ID": "9qibrxnc18ok",
+  "CTF_CDA_ACCESS_TOKEN": "qHiPv4aTDUEO-euFK-sZSIRZxsCj_3mDBCMiKglaZdA",
+  "CTF_ENVIRONMENT": "master"
 }
