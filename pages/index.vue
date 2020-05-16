@@ -53,23 +53,6 @@ export default {
       .catch(console.error)
   },
 
-  // asyncData({ data }) {
-  //   return Promise.all([
-  //     contentfulClient.getEntries({
-  //       content_type: 'BlogPostMS'
-  //     })
-  //   ])
-  //     .then(([pages]) => {
-  //       return {
-  //         title: pages.items[0].fields.title,
-  //         dateTime: pages.items[0].fields.dateTime,
-  //         pic: pages.items[0].fields.pic,
-  //         authorArtist: pages.items[0].fields.authorArtist
-  //       }
-  //     })
-  //     .catch(console.error)
-  // },
-
   filters: {}
 }
 </script>

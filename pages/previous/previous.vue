@@ -10,14 +10,49 @@
       >
     </div>
 
-    <v-card class="archive-card">
-      <v-card-title
-        >A series of cards will appear here linking to pages wiht the actual
-        cartoon.
-      </v-card-title>
-    </v-card>
+    <div v-for="post in posts" :key="post.id">
+      <v-card class="archive-card">
+        <v-card-title>{{ post.title }} </v-card-title>
+        <v-card-subtitle>
+          {{ post.dateTime }}
+        </v-card-subtitle>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <p>Check it out! =></p>
+        </v-card-actions>
+      </v-card>
+    </div>
   </div>
 </template>
+
+<script>
+import { createClient } from '~/plugins/contentful'
+const contentfulClient = createClient()
+
+export default {
+  asyncData({ data }) {
+    return Promise.all([
+      contentfulClient.getEntries({
+        content_type: 'blogPostMs',
+        order: '-sys.createdAt'
+      })
+    ]).then(([pages]) => {
+      return {
+        posts: pages.items.map(post => {
+          return {
+            id: post.sys.id,
+            title: post.fields.title,
+            dateTime: post.fields.dateTime,
+            authorArtist: post.fields.authorArtist
+          }
+        })
+      }
+    })
+  },
+
+  filters: {}
+}
+</script>
 
 <style scoped>
 .page-title {
