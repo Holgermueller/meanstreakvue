@@ -10,26 +10,26 @@
       >
     </div>
 
-    <div v-for="post in posts" :key="post.id">
-      <v-card class="archive-card">
-        <v-card-title>{{ post.title }} </v-card-title>
-        <v-card-subtitle>
-          {{ post.dateTime }}
-        </v-card-subtitle>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <p>Check it out! =></p>
-        </v-card-actions>
-      </v-card>
-    </div>
+    <PreviousCard
+      v-for="post in posts"
+      :key="post.id"
+      :title="post.title"
+      :id="post.id"
+      :dateTime="post.dateTime"
+    />
   </div>
 </template>
 
 <script>
 import { createClient } from '~/plugins/contentful'
 const contentfulClient = createClient()
+import PreviousCard from './previousCard'
 
 export default {
+  components: {
+    PreviousCard
+  },
+
   asyncData({ data }) {
     return Promise.all([
       contentfulClient.getEntries({
@@ -42,8 +42,7 @@ export default {
           return {
             id: post.sys.id,
             title: post.fields.title,
-            dateTime: post.fields.dateTime,
-            authorArtist: post.fields.authorArtist
+            dateTime: post.fields.dateTime
           }
         })
       }
@@ -57,9 +56,5 @@ export default {
 <style scoped>
 .page-title {
   margin: 4% 8%;
-}
-.archive-card {
-  margin: 0 auto;
-  width: 85%;
 }
 </style>
