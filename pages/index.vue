@@ -7,7 +7,7 @@
     <v-card class="index-card">
       <v-card-title class="headline"> {{ title }} </v-card-title>
       <v-card-subtitle>
-        {{ dateTime }}
+        {{ dateTime | changeDateFilter }}
       </v-card-subtitle>
 
       <v-card-text>
@@ -31,6 +31,7 @@
 <script>
 import { createClient } from '~/plugins/contentful.js'
 const contentfulClient = createClient()
+const moment = require('moment')
 
 export default {
   components: {},
@@ -53,7 +54,11 @@ export default {
       .catch(console.error)
   },
 
-  filters: {}
+  filters: {
+    changeDateFilter: value => {
+      return moment(value).format('dddd, Do MMMM YYYY, LT')
+    }
+  }
 }
 </script>
 

@@ -10,7 +10,7 @@
           </v-btn>
         </v-card-title>
         <v-card-subtitle>
-          {{ dateTime }}
+          {{ dateTime | changeDateFilter }}
         </v-card-subtitle>
       </v-card>
     </v-hover>
@@ -18,6 +18,8 @@
 </template>
 
 <script>
+const moment = require('moment')
+
 export default {
   props: {
     id: {
@@ -30,6 +32,12 @@ export default {
 
     dateTime: {
       type: String
+    }
+  },
+
+  filters: {
+    changeDateFilter: value => {
+      return moment(value).format('dddd, Do MMMM YYYY, LT')
     }
   }
 }
