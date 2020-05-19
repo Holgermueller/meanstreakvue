@@ -17,6 +17,13 @@
         ></v-img>
       </v-card-text>
       <v-card-actions>
+        <nuxt-link to="/previous/previous">
+          <v-btn depressed>
+            <span class="mdi mdi-backburger"></span>
+            Back
+          </v-btn>
+        </nuxt-link>
+
         <v-spacer></v-spacer>
         <h6>
           By,
@@ -61,5 +68,8 @@ export default {
 }
 .image {
   margin: 4% auto;
+}
+a {
+  text-decoration: none;
 }
 </style>

@@ -22,7 +22,7 @@
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <h6>{{ authorArtist }}</h6>
+        <h6>By, {{ authorArtist }}</h6>
       </v-card-actions>
     </v-card>
   </div>
