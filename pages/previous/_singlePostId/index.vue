@@ -1,18 +1,25 @@
 <template>
   <div class="post">
-    <v-card>
+    <v-card class="archive-card">
       <v-card-title>
         <h1>
           {{ title }}
         </h1>
       </v-card-title>
       <v-card-subtitle>
-        {{ dateTime }}
+        {{ dateTime | changeDateFilter }}
       </v-card-subtitle>
-      <v-card-text></v-card-text>
+      <v-card-text>
+        <v-img
+          :src="pic"
+          alt="Tired old pic will appear here."
+          class="image"
+        ></v-img>
+      </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
         <h6>
+          By,
           {{ authorArtist }}
         </h6>
       </v-card-actions>
@@ -32,12 +39,27 @@ export default {
         return {
           title: page.fields.title,
           authorArtist: page.fields.authorArtist,
-          dateTime: page.fields.dateTime
+          dateTime: page.fields.dateTime,
+          pic: 'https:' + page.fields.pic.fields.file.url
         }
       })
       .catch(console.error)
+  },
+
+  filters: {
+    changeDateFilter: value => {
+      return moment(value).format('dddd, Do MMMM YYYY, LT')
+    }
   }
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.archive-card {
+  width: 75%;
+  margin: 5% auto;
+}
+.image {
+  margin: 4% auto;
+}
+</style>

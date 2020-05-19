@@ -33,7 +33,7 @@
             Home
           </v-tab>
           <v-tab to="/previous/previous" active-class="black--text">
-            Previous
+            Archives
           </v-tab>
           <v-tab to="/about" active-class="black--text">
             About
