@@ -10,7 +10,7 @@
           </v-btn>
         </v-card-title>
         <v-card-subtitle>
-          {{ dateTime | changeDateFilter }}
+          {{ dateTime | monthAndYearFilter }}
         </v-card-subtitle>
       </v-card>
     </v-hover>
@@ -36,8 +36,8 @@ export default {
   },
 
   filters: {
-    changeDateFilter: value => {
-      return moment(value).format('dddd, Do MMMM YYYY, LT')
+    monthAndYearFilter: value => {
+      return moment(value).format('MMMM YYYY')
     }
   }
 }
