@@ -19,14 +19,14 @@
       <v-card-actions>
         <nuxt-link to="/previous/previous">
           <v-btn depressed>
-            <span class="mdi mdi-backburger"></span>
+            <span class="mdi mdi-arrow-left-bold"></span>
             Back
           </v-btn>
         </nuxt-link>
 
         <v-spacer></v-spacer>
         <h6>
-          By,
+          By:
           {{ authorArtist }}
         </h6>
       </v-card-actions>

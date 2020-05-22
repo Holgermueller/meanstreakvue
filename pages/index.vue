@@ -11,8 +11,6 @@
       </v-card-subtitle>
 
       <v-card-text>
-        <h1>Image will appear here!!</h1>
-
         <v-img
           :src="pic"
           alt="Today's awesome cartoon/crime against nature and humanity seems to be experiencing technical difficulties. We apologize for any inconvenience or trauma this may have caused."
