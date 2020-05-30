@@ -19,6 +19,7 @@
         </v-img>
       </v-card-text>
       <v-card-actions>
+        <ShareDialog />
         <v-spacer></v-spacer>
         <h6>By, {{ authorArtist }}</h6>
       </v-card-actions>
@@ -30,9 +31,12 @@
 import { createClient } from '~/plugins/contentful.js'
 const contentfulClient = createClient()
 const moment = require('moment')
+import ShareDialog from '../components/shareDialog'
 
 export default {
-  components: {},
+  components: {
+    ShareDialog
+  },
 
   asyncData({ data }) {
     return Promise.all([

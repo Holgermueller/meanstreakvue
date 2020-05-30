@@ -23,6 +23,9 @@
             Back
           </v-btn>
         </nuxt-link>
+        <v-spacer></v-spacer>
+
+        <ShareDialog />
 
         <v-spacer></v-spacer>
         <h6>
@@ -38,8 +41,13 @@
 const moment = require('moment')
 import { createClient } from '~/plugins/contentful'
 const contentfulClient = createClient()
+import ShareDialog from '../../../components/shareDialog'
 
 export default {
+  components: {
+    ShareDialog
+  },
+
   asyncData({ data, params }) {
     return Promise.all([contentfulClient.getEntry(params.singlePostId)])
       .then(([page]) => {
