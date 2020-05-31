@@ -43,7 +43,8 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/robots'
+    '@nuxtjs/robots',
+    'vue-social-sharing/nuxt'
   ],
   env: {
     CTF_SPACE_ID: contentfulConfig.CTF_SPACE_ID,
