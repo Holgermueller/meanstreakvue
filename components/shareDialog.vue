@@ -10,43 +10,16 @@
       <v-card>
         <v-card-title>Share:</v-card-title>
         <v-card-actions>
-          <v-btn icon>
-            <v-icon>mdi-twitter</v-icon>
-          </v-btn>
-
-          <v-spacer></v-spacer>
-
-          <v-btn icon>
-            <v-icon>mdi-reddit</v-icon>
-          </v-btn>
-
-          <v-spacer></v-spacer>
-
-          <v-btn icon>
-            <v-icon>mdi-whatsapp</v-icon>
-          </v-btn>
-
-          <v-spacer></v-spacer>
-
-          <v-btn icon>
-            <v-icon>mdi-snapchat</v-icon>
-          </v-btn>
-
-          <v-spacer></v-spacer>
-
-          <v-btn icon>
-            <v-icon>mdi-instagram</v-icon>
-          </v-btn>
-          <v-spacer></v-spacer>
-
           <ShareNetwork
-            network="facebook"
-            title="Check out the newest cartoon from MeanStreak!"
-            url="#"
-            hashtags="MeanStreak"
+            v-for="(network, index) in networks"
+            :key="index"
+            :network="network.network"
+            :url="sharing.url"
+            :title="sharing.title"
+            :hashtags="sharing.hashtags"
           >
-            <v-btn icon>
-              <v-icon>mdi-facebook</v-icon>
+            <v-btn icon :class="network.class">
+              <v-icon>{{ network.class }}</v-icon>
             </v-btn>
           </ShareNetwork>
         </v-card-actions>
@@ -59,7 +32,49 @@
 export default {
   data() {
     return {
-      dialog: false
+      dialog: false,
+      sharing: {
+        url: 'url',
+        title: 'Check out the newest cartoon from MeanStreak!',
+        hashtags: 'MeanStreak'
+      },
+      networks: [
+        {
+          network: 'Twitter',
+          name: 'Twitter',
+          class: 'mdi-twitter'
+        },
+        {
+          network: 'Reddit',
+          name: 'Reddit',
+          class: 'mdi-reddit'
+        },
+        {
+          network: 'whatsapp',
+          name: 'whatsapp',
+          class: 'mdi-whatsapp'
+        },
+        {
+          network: 'skype',
+          name: 'skype',
+          class: 'mdi-skype'
+        },
+        {
+          network: 'pinterest',
+          name: 'Pinterest',
+          class: 'mdi-pinterest'
+        },
+        {
+          network: 'linkedin',
+          name: 'Linkedin',
+          class: 'mdi-linkedin'
+        },
+        {
+          network: 'facebook',
+          name: 'facebook',
+          class: 'mdi-facebook'
+        }
+      ]
     }
   }
 }
