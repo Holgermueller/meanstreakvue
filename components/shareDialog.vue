@@ -30,11 +30,17 @@
 
 <script>
 export default {
+  props: {
+    id: {
+      type: String
+    }
+  },
+
   data() {
     return {
       dialog: false,
       sharing: {
-        url: '#',
+        url: this.id,
         title: 'Check out the newest cartoon from MeanStreak!',
         description: "It's MeanStreak's newest cartoon to underwhelm you.",
         hashtags: 'MeanStreak'

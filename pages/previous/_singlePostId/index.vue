@@ -25,7 +25,7 @@
         </nuxt-link>
         <v-spacer></v-spacer>
 
-        <ShareDialog />
+        <ShareDialog :id="id" />
 
         <v-spacer></v-spacer>
         <h6>
@@ -46,6 +46,12 @@ import ShareDialog from '../../../components/shareDialog'
 export default {
   components: {
     ShareDialog
+  },
+
+  data() {
+    return {
+      id: this.$route.fullPath
+    }
   },
 
   asyncData({ data, params }) {
