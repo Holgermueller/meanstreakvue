@@ -16,7 +16,7 @@
     "@nuxtjs/robots": "^2.4.2",
     "contentful": "^8.1.7",
     "dotenv": "^8.2.0",
-    "nuxt": "^2.15.8",
+    "nuxt": "^3.0.0",
     "vue-social-sharing": "^3.0.4"
   },
   "devDependencies": {
